@@ -1,0 +1,17 @@
+.bar {
+  display: flex;
+  height: 50px;
+  background-color: white;
+}
+.loupe {
+  width: 20px;
+  margin-left: 10px;
+  padding-right: 10px;
+}
+input {
+  width: 100%;
+  border: none;
+}
+input:focus {
+  outline: none;
+}

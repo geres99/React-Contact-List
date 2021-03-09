@@ -1,0 +1,12 @@
+.header {
+  display: flex;
+  background-color: rgb(2, 161, 172);
+  height: 50px;
+  justify-content: center;
+}
+
+.header > * {
+  padding-top: 13px;
+  font-weight: 600;
+  color: white;
+}
