@@ -10,9 +10,9 @@
 }
 .noImage {
   display: flex;
-  width: 44px;
-  height: 44px;
-  border: 3px solid black;
+  width: 46px;
+  height: 46px;
+  border: 2px solid rgb(150, 150, 150);
   border-radius: 100%;
   justify-content: center;
   margin-left: 5px;
@@ -21,8 +21,9 @@
   background-color: white;
 }
 .noImage > * {
-  margin-top: 7px;
+  margin-top: 8px;
   font-size: larger;
+  color: rgb(150, 150, 150);
 }
 .spaceFiller {
   display: flex;

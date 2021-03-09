@@ -4,14 +4,22 @@ import "./User.css";
 let User = (props) => {
   let [inputChecked, setInputChecked] = React.useState(false);
 
+  let onInputClick = () => {
+    setInputChecked(!inputChecked);
+    if (inputChecked === false) {
+      props.setInputsChecked([...props.inputsChecked, props.userData.id]);
+      console.log([...props.inputsChecked, props.userData.id]);
+    } else {
+      props.setInputsChecked(
+        props.inputsChecked.filter((x) => x !== props.userData.id)
+      );
+      console.log(props.inputsChecked.filter((x) => x !== props.userData.id));
+    }
+  };
+
   if (props.userData.avatar !== null) {
     return (
-      <div
-        className="user"
-        onClick={() => {
-          setInputChecked(!inputChecked);
-        }}
-      >
+      <div className="user" onClick={onInputClick}>
         <img
           className="avatar"
           src={props.userData.avatar}
@@ -29,12 +37,7 @@ let User = (props) => {
     );
   } else {
     return (
-      <div
-        className="user"
-        onClick={() => {
-          setInputChecked(!inputChecked);
-        }}
-      >
+      <div className="user" onClick={onInputClick}>
         <div className="noImage">
           <div>
             {props.userData.first_name[0] + props.userData.last_name[0]}

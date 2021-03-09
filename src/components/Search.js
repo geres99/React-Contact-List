@@ -1,7 +1,7 @@
 import React from "react";
 import "./Search.css";
 
-let Search = () => {
+let Search = (props) => {
   return (
     <div className="bar">
       <img
@@ -9,7 +9,12 @@ let Search = () => {
         src={process.env.PUBLIC_URL + "/images/loupe.svg"}
         alt="loupe"
       ></img>
-      <input />
+      <input
+        className="searchInput"
+        onChange={(e) => {
+          props.setInputValue(e.target.value);
+        }}
+      />
     </div>
   );
 };

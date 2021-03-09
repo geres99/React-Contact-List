@@ -6,6 +6,8 @@ import User from "./components/User";
 
 function App() {
   let [users, setUsers] = React.useState(false);
+  let [inputsChecked, setInputsChecked] = React.useState([]);
+  let [inputValue, setInputValue] = React.useState("");
 
   let sortByName = (a, b) => {
     if (a.last_name < b.last_name) {
@@ -25,20 +27,48 @@ function App() {
       let responseJson = await response.json();
       responseJson = responseJson.sort(sortByName);
       setUsers(responseJson);
-      console.log(responseJson);
     } catch (error) {
       console.error(error);
     }
+  }
+
+  let usersFiltered = undefined;
+
+  if (users !== false) {
+    usersFiltered = users
+      .filter((data) => {
+        if (inputValue === "") {
+          return data;
+        }
+        if (
+          data.first_name.toLowerCase().includes(inputValue.toLowerCase()) ||
+          data.last_name.toLowerCase().includes(inputValue.toLowerCase()) ||
+          (
+            data.first_name.toLowerCase() +
+            " " +
+            data.last_name.toLowerCase()
+          ).includes(inputValue.toLowerCase())
+        ) {
+          return data;
+        }
+      })
+      .map((userData) => {
+        return (
+          <User
+            userData={userData}
+            inputsChecked={inputsChecked}
+            setInputsChecked={setInputsChecked}
+          />
+        );
+      });
   }
 
   if (users !== false) {
     return (
       <div>
         <Header />
-        <Search />
-        {users.map((userData) => (
-          <User userData={userData} />
-        ))}
+        <Search setInputValue={setInputValue} />
+        {usersFiltered}
       </div>
     );
   } else {
