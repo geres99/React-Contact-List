@@ -1,4 +1,34 @@
 .user {
   display: flex;
   border-bottom: 1px solid gray;
+  margin-top: 5px;
+}
+.avatar {
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+.noImage {
+  display: flex;
+  width: 44px;
+  height: 44px;
+  border: 3px solid black;
+  border-radius: 100%;
+  justify-content: center;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  background-color: white;
+}
+.noImage > * {
+  margin-top: 7px;
+  font-size: larger;
+}
+.spaceFiller {
+  display: flex;
+  flex-grow: 1;
+}
+input {
+  width: auto;
+  margin-right: 15px;
 }
