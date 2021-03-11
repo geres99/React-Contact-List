@@ -22,7 +22,6 @@ let User = (props) => {
         props.inputsChecked.filter((x) => x !== props.userData.id)
       );
       console.log(props.inputsChecked.filter((x) => x !== props.userData.id));
-      console.log(props.usersFiltered);
     }
   };
 
