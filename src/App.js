@@ -35,32 +35,33 @@ function App() {
   let usersFiltered = undefined;
 
   if (users !== false) {
-    usersFiltered = users
-      .filter((data) => {
-        if (inputValue === "") {
-          return data;
-        }
-        if (
-          data.first_name.toLowerCase().includes(inputValue.toLowerCase()) ||
-          data.last_name.toLowerCase().includes(inputValue.toLowerCase()) ||
-          (
-            data.first_name.toLowerCase() +
-            " " +
-            data.last_name.toLowerCase()
-          ).includes(inputValue.toLowerCase())
-        ) {
-          return data;
-        }
-      })
-      .map((userData) => {
-        return (
-          <User
-            userData={userData}
-            inputsChecked={inputsChecked}
-            setInputsChecked={setInputsChecked}
-          />
-        );
-      });
+    usersFiltered = users.filter((data) => {
+      if (inputValue === "") {
+        return data;
+      }
+      if (
+        data.first_name.toLowerCase().includes(inputValue.toLowerCase()) ||
+        data.last_name.toLowerCase().includes(inputValue.toLowerCase()) ||
+        (
+          data.first_name.toLowerCase() +
+          " " +
+          data.last_name.toLowerCase()
+        ).includes(inputValue.toLowerCase())
+      ) {
+        return data;
+      }
+    });
+
+    usersFiltered = usersFiltered.map((userData) => {
+      return (
+        <User
+          userData={userData}
+          inputsChecked={inputsChecked}
+          setInputsChecked={setInputsChecked}
+          usersFiltered={usersFiltered}
+        />
+      );
+    });
   }
 
   if (users !== false) {

@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./User.css";
 
 let User = (props) => {
   let [inputChecked, setInputChecked] = React.useState(false);
+
+  useEffect(() => {
+    if (props.inputsChecked.includes(props.userData.id)) {
+      setInputChecked(true);
+    } else {
+      setInputChecked(false);
+    }
+  }, [props.inputsChecked, props.userData.id, props.usersFiltered]);
 
   let onInputClick = () => {
     setInputChecked(!inputChecked);
@@ -14,6 +22,7 @@ let User = (props) => {
         props.inputsChecked.filter((x) => x !== props.userData.id)
       );
       console.log(props.inputsChecked.filter((x) => x !== props.userData.id));
+      console.log(props.usersFiltered);
     }
   };
 
